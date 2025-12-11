@@ -1,17 +1,30 @@
-# Hello CLI
+# Todo CLI
 
-Small Go CLI that prints the current time and "hello world!" when executed.
+Small Go CLI for managing a simple todo list stored as JSON.
 
 Build:
 
 ```sh
-go build -o hello
+go build -o todo
 ```
 
-Run:
+Run examples:
 
 ```sh
-./hello
+# Add a task
+./todo add "Buy milk"
+
+# List pending tasks
+./todo list
+
+# List all tasks including done ones
+./todo list --all
+
+# Mark task 1 done
+./todo done 1
+
+# Remove task 2
+./todo rm 2
 ```
 
 Test:
@@ -19,3 +32,8 @@ Test:
 ```sh
 go test ./...
 ```
+
+Notes:
+
+- By default tasks are persisted to `$HOME/.todo.json`. Override with `TODO_FILE=/path/to/file ./todo ...`.
+- This implementation uses only the Go standard library and stores tasks as an array of objects in JSON.
